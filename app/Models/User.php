@@ -33,4 +33,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(App\Models\Book::class);
     }
+
+    // Set Attributes
+    public function setPasswordAttribute($value)
+    {
+        if (! empty($value)) {
+            $this->attributes['password'] = \Hash::make($value);
+        }
+    }
 }
