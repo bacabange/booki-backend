@@ -46,4 +46,23 @@ class BookTest extends FeatureTestCase
 	    	'state' => $data['state']
         ]);
     }
+
+    public function test_create_book_invalid()
+    {
+    	$user = $this->defaultUser();
+
+    	$data = [
+    		'name' => '',
+	    	'author' => 'Gabriel Garcia Marquez',
+	    	'pages' => 'good',
+	    	'started_in' => '',
+	    	'description' => '',
+	    	'user_id' => $user->id,
+	    	'state' => 'in_process'
+    	];
+
+    	$response = $this->post('api/v1/books', $data, ['Accept' => 'application/json']);
+
+        $response->assertStatus(422);
+    }
 }
