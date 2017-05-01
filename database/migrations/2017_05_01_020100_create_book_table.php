@@ -19,6 +19,7 @@ class CreateBookTable extends Migration
             $table->string('author')->nullable();
             $table->integer('pages');
             $table->date('started_in');
+            $table->string('state');
             $table->text('description')->nullable();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
