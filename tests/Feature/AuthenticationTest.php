@@ -51,7 +51,7 @@ class AuthenticationTest extends FeatureTestCase
 
         $response = $this->post('api/v1/register', $data, ['Accept' => 'application/json']);
 
-        $response->assertStatus(200);
-        
+        $response->assertStatus(422);
+
     }
 }
