@@ -20,3 +20,9 @@ Route::middleware('jwt-auth')->get('/user', function (Request $request) {
 	$user = \JWTAuth::toUser($request->get('token'));
     return $user;
 });
+
+Route::resource('books', 'BookController', [
+    'parameters' => [
+        'books' => 'book'
+    ]
+]);
