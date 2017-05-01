@@ -73,4 +73,17 @@ class AuthenticationTest extends FeatureTestCase
             ]);
 
     }
+
+    public function test_login_user_invalid()
+    {
+        $data = [
+            'email' => 'usermane',
+            'password' => '',
+        ];
+
+        $response = $this->post('api/v1/login', $data, ['Accept' => 'application/json']);
+
+        $response->assertStatus(422);
+
+    }
 }

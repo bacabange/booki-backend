@@ -17,5 +17,6 @@ Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
 
 Route::middleware('jwt-auth')->get('/user', function (Request $request) {
-    return $request->user();
+	$user = \JWTAuth::toUser($request->get('token'));
+    return $user;
 });

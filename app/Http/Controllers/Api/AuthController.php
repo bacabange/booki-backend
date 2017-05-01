@@ -10,6 +10,7 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\Http\Requests\Api\RegisterUserRequest;
+use App\Http\Requests\Api\LoginUserRequest;
 
 
 class AuthController extends Controller
@@ -26,7 +27,7 @@ class AuthController extends Controller
     	];
     }
 
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
     	$input = $request->only('email', 'password');
 
