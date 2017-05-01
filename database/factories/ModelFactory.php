@@ -24,3 +24,17 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Book::class, function (Faker\Generator $faker) {
+    return [
+    	'name' => $faker->sentence(4),
+    	'author' => $faker->name,
+    	'pages' => $faker->randomNumber(3),
+    	'started_in' => $faker->date(),
+    	'description' => $faker->text(),
+    	'user_id' => function () {
+            return factory(App\Models\User::class)->create()->id;
+        },
+    	'state' => $faker->randomElement(['in_process', 'paused', 'finish'])
+    ];
+});

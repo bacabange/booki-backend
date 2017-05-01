@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Book;
 
 class UserTableSeeder extends Seeder
 {
@@ -12,7 +13,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 20)->create();
+        // factory(User::class, 20)->create();
+        factory(Book::class, 20)->create();
         
     }
 }
