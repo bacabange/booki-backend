@@ -54,4 +54,23 @@ class AuthenticationTest extends FeatureTestCase
         $response->assertStatus(422);
 
     }
+
+    public function test_login_user()
+    {
+        $data = [
+            'email' => 'stivencastillo.90@gmail.com',
+            'password' => '123456',
+        ];
+
+    	$user = factory(User::class)->create($data);
+
+        $response = $this->post('api/v1/login', $data, ['Accept' => 'application/json']);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+            ]);
+
+    }
 }
