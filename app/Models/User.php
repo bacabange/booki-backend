@@ -10,6 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table = 'user';
+    protected $appends = ['token_jwt'];
 
     /**
      * The attributes that are mass assignable.
@@ -40,5 +41,11 @@ class User extends Authenticatable
         if (! empty($value)) {
             $this->attributes['password'] = \Hash::make($value);
         }
+    }
+
+    // Get Attributer
+    public function getTokenJwtAttribute()
+    {
+        return \JWTAuth::fromUser($this);
     }
 }
