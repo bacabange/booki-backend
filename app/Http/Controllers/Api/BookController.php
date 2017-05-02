@@ -12,9 +12,17 @@ use App\Models\Book;
 class BookController extends Controller
 {
 
-	public function index()
+	public function index(Request $request)
 	{
-		
+		$user = $request->get('user');
+
+		$books = $user->books;
+
+		return response()->json([
+			'success' => true,
+			'data' => $books
+		]);
+
 	}
 
     public function store(CreateBookRequest $request)
