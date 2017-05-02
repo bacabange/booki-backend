@@ -21,6 +21,6 @@ abstract class TestCase extends BaseTestCase
         if ($this->defaultUser) {
             return $this->defaultUser;
         }
-        return $this->defaultUser = factory(User::class)->create();
+        return $this->defaultUser = factory(User::class)->create(['password' => '123456']);
     }
 }
