@@ -25,6 +25,14 @@ class BookController extends Controller
 
 	}
 
+	public function show(Book $book)
+    {
+        return [
+            'success' => true,
+            'data' => $book->toArray()
+        ];
+    }
+
     public function store(CreateBookRequest $request)
     {
     	$user = $request->get('user');
