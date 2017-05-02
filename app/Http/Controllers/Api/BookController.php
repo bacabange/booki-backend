@@ -11,13 +11,25 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
+
+	public function index()
+	{
+		
+	}
+
     public function store(CreateBookRequest $request)
     {
-    	$book = Book::create($request->only('name', 'author', 'pages', 'started_in', 'description', 'user_id', 'state'));
+    	$user = $request->get('user');
 
-    	return response()->json([
-    		'success' => true,
-    		'data' => $book
-    	]);
+
+		$data = $request->only('name', 'author', 'pages', 'started_in', 'description', 'state');
+		$data['user_id'] = $user->id;
+
+		$book = Book::create($data);
+
+		return response()->json([
+			'success' => true,
+			'data' => $book
+		]);
     }
 }

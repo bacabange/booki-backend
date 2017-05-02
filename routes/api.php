@@ -21,8 +21,10 @@ Route::middleware('jwt-auth')->get('/user', function (Request $request) {
     return $user;
 });
 
-Route::resource('books', 'BookController', [
-    'parameters' => [
-        'books' => 'book'
-    ]
-]);
+Route::group(['middleware' => ['jwt-auth']], function() {
+	Route::resource('books', 'BookController', [
+		'parameters' => [
+			'books' => 'book'
+		]
+	]);
+});
