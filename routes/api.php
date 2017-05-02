@@ -21,7 +21,7 @@ Route::middleware('jwt-auth')->get('/user', function (Request $request) {
     return $user;
 });
 
-Route::group(['middleware' => ['jwt-auth']], function() {
+Route::group(['middleware' => ['jwt.auth', 'jwt.refresh']], function() {
 	Route::resource('books', 'BookController', [
 		'parameters' => [
 			'books' => 'book'
