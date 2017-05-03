@@ -27,9 +27,11 @@ class BookController extends Controller
 
 	public function show(Book $book)
     {
+    	$book->stories;
+
         return [
             'success' => true,
-            'data' => $book->toArray()
+            'data' => $book
         ];
     }
 
