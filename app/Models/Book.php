@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\User;
+use App\Models\Story;
+
 class Book extends Model
 {
     protected $table = 'book';
@@ -18,11 +21,11 @@ class Book extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(App\Models\User::class);
+		return $this->belongsTo(User::class);
 	}
 
 	public function stories()
 	{
-		return $this->hasMany(App\Models\Story::class);
+		return $this->hasMany(Story::class);
 	}
 }
