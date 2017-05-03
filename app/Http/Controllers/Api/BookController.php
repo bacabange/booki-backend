@@ -25,6 +25,16 @@ class BookController extends Controller
 
 	}
 
+	public function show(Book $book)
+    {
+    	$book->stories;
+
+        return [
+            'success' => true,
+            'data' => $book
+        ];
+    }
+
     public function store(CreateBookRequest $request)
     {
     	$user = $request->get('user');
