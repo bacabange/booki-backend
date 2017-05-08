@@ -12,9 +12,10 @@ return [
      */
     'supportsCredentials' => false,
     'allowedOrigins' => ['*'],
-    'allowedHeaders' => ['*'],
-    'allowedMethods' => ['*'],
+    'allowedHeaders' => ['Content-Type', 'Accept', 'x-xsrf-token', ' x-csrf-token', 'Authorization'],
+    'allowedMethods' => ['GET', 'POST', 'PUT',  'DELETE', 'PATCH'],
     'exposedHeaders' => [],
     'maxAge' => 0,
+    'hosts' => [],
 ];
 
